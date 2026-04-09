@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5e6d3;
+    color: #5a3e2b;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+h1 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+/* BOUTON RETOUR */
+#retour {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    display: none;
+}
+
+/* MAIN */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* MENU */
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+/* BOUTONS */
+button {
+    background-color: #5a3e2b;
+    color: #f5e6d3;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: lowercase;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #7a5a40;
+}
+
+/* PRODUITS */
+#produits {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.carte {
+    text-align: center;
+}
+
+.carte img {
+    width: 150px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* RESERVATION */
+#reservation {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 15px;
+}
