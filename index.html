@@ -8,47 +8,44 @@
 
 <body>
 
-    <!-- TITRE -->
-    <header>
-        <h1>BOULANGERIE</h1>
-        <button id="retour" onclick="retour()">← retour</button>
-    </header>
+<header>
+    <h1>BOULANGERIE</h1>
+    <button id="retour" onclick="retour()">← retour</button>
+</header>
 
-    <!-- CONTENU -->
-    <main id="contenu">
+<main>
 
-        <!-- MENU PRINCIPAL -->
-        <div class="menu" id="menuPrincipal">
-            <button onclick="afficherCategorie('pain')">pain</button>
-            <button onclick="afficherCategorie('patisserie')">pâtisserie</button>
-            <button onclick="afficherCategorie('boisson')">boisson</button>
-        </div>
+    <!-- MENU PRINCIPAL -->
+    <div class="menu" id="menuPrincipal">
+        <button onclick="afficherCategorie('pain')">pain</button>
+        <button onclick="afficherCategorie('patisserie')">pâtisserie</button>
+        <button onclick="afficherCategorie('boisson')">boisson</button>
+    </div>
 
-        <!-- PRODUITS -->
-        <div id="produits" class="hidden"></div>
+    <!-- PRODUITS -->
+    <div id="produits" class="hidden"></div>
 
-        <!-- RESERVATION -->
-        <div id="reservation" class="hidden">
-            <h2 id="produitChoisi"></h2>
+    <!-- RESERVATION -->
+    <div id="reservation" class="hidden">
+        <h2 id="produitChoisi"></h2>
 
-            <input type="date">
+        <input type="date">
 
-            <select>
-                <option>9h - 12h</option>
-                <option>12h - 15h</option>
-                <option>15h - 18h</option>
-            </select>
+        <select>
+            <option>9h - 12h</option>
+            <option>12h - 15h</option>
+            <option>15h - 18h</option>
+        </select>
 
-            <button onclick="validerReservation()">valider</button>
-        </div>
+        <button onclick="validerReservation()">valider</button>
+    </div>
 
-    </main>
+</main>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>contact : contact@boulangerie.fr</p>
-        <p>téléphone : 06 12 34 56 78</p>
-    </footer>
+<footer>
+    <p>contact : contact@boulangerie.fr</p>
+    <p>téléphone : 06 12 34 56 78</p>
+</footer>
 
 <script>
 let etape = "menu";
@@ -73,6 +70,7 @@ const data = {
 
 function afficherCategorie(cat) {
     etape = "categorie";
+
     document.getElementById("menuPrincipal").classList.add("hidden");
 
     const div = document.getElementById("produits");
@@ -81,10 +79,9 @@ function afficherCategorie(cat) {
 
     data[cat].forEach(produit => {
         div.innerHTML += `
-            <div class="carte">
+            <div class="carte" onclick="reserver('${produit.nom}')">
                 <img src="${produit.img}">
                 <p>${produit.nom}</p>
-                <button onclick="reserver('${produit.nom}')">réserver</button>
             </div>
         `;
     });
@@ -94,6 +91,7 @@ function afficherCategorie(cat) {
 
 function reserver(nom) {
     etape = "reservation";
+
     document.getElementById("produits").classList.add("hidden");
 
     document.getElementById("reservation").classList.remove("hidden");
@@ -101,15 +99,21 @@ function reserver(nom) {
 }
 
 function retour() {
+    const produits = document.getElementById("produits");
+
     if (etape === "categorie") {
-        document.getElementById("produits").classList.add("hidden");
+        produits.classList.add("hidden");
+        produits.innerHTML = "";
+
         document.getElementById("menuPrincipal").classList.remove("hidden");
         document.getElementById("retour").style.display = "none";
+
         etape = "menu";
     }
     else if (etape === "reservation") {
         document.getElementById("reservation").classList.add("hidden");
-        document.getElementById("produits").classList.remove("hidden");
+        produits.classList.remove("hidden");
+
         etape = "categorie";
     }
 }
