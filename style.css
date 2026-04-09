@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f5e6d3;
     color: #5a3e2b;
+
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -10,16 +11,15 @@ body {
 
 /* HEADER */
 header {
+    position: relative;
     text-align: center;
     padding: 20px;
-    position: relative;
 }
 
 h1 {
-    margin: 0;
     font-size: 40px;
     font-weight: bold;
-    border-radius: 20px;
+    margin: 0;
 }
 
 /* BOUTON RETOUR */
@@ -30,7 +30,7 @@ h1 {
     display: none;
 }
 
-/* MAIN */
+/* MAIN CENTRÉ */
 main {
     flex: 1;
     display: flex;
@@ -51,7 +51,7 @@ button {
     color: #f5e6d3;
     border: none;
     padding: 15px 25px;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
     text-transform: lowercase;
@@ -72,6 +72,12 @@ button:hover {
 
 .carte {
     text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.carte:hover {
+    transform: scale(1.05);
 }
 
 .carte img {
@@ -81,19 +87,21 @@ button:hover {
     border-radius: 15px;
 }
 
-.hidden {
-    display: none;
-}
-
 /* RESERVATION */
 #reservation {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    align-items: center;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
     padding: 15px;
+}
+
+/* CACHÉ */
+.hidden {
+    display: none;
 }
